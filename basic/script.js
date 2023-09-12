@@ -3,7 +3,7 @@ import http from "k6/http";
 
 export let options = {
     stages: [
-        { duration: "20s", target: 10 }
+        { duration: "40s", target: 10 }
     ]
 };
 
