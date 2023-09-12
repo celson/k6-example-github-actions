@@ -1,0 +1,22 @@
+name: K6 Extension Workflow
+on: [push]
+
+jobs:
+  k6_local_test:
+    name: k6 counter extension run
+    runs-on: ubuntu-latest
+    container: docker://golang:1.17-alpine
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Install xk6
+        run: go install go.k6.io/xk6/cmd/xk6@latest
+
+      - name: Build xk6-counter binary
+        run: xk6 build --with github.com/mostafa/xk6-kafka@latest
+
+      - name: Run k6 extension test
+        run: ./k6 run --vus 50 --duration 60s -e BROKERS=pkc-p11xm.us-east-1.aws.confluent.cloud:9092 -e USER_SASL=JZOATLWF3NK4UE34 -e PASS_SASL=GktzeatMmLn1bjCkls2ZEKeLHY4uMAUhFR4mPC8VxbyWiMIwbVcVVGs4ZOPSuppM kafka/script.js 
+
