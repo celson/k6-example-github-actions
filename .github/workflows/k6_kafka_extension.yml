@@ -18,5 +18,5 @@ jobs:
         run: xk6 build --with github.com/mostafa/xk6-kafka@latest
 
       - name: Run k6 extension test
-        run: ./k6 run --vus 50 --duration 60s -e BROKERS=pkc-p11xm.us-east-1.aws.confluent.cloud:9092 -e USER_SASL=JZOATLWF3NK4UE34 -e PASS_SASL=GktzeatMmLn1bjCkls2ZEKeLHY4uMAUhFR4mPC8VxbyWiMIwbVcVVGs4ZOPSuppM kafka/script.js 
+        run: ./k6 run --vus 50 --duration 1h -e BROKERS=pkc-p11xm.us-east-1.aws.confluent.cloud:9092 -e USER_SASL=JZOATLWF3NK4UE34 -e PASS_SASL=GktzeatMmLn1bjCkls2ZEKeLHY4uMAUhFR4mPC8VxbyWiMIwbVcVVGs4ZOPSuppM kafka/script.js 
 
