@@ -1,5 +1,5 @@
 name: K6 Extension Workflow
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   k6_local_test:
