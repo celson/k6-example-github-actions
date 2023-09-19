@@ -17,6 +17,9 @@ on:
       PASS_SASL:
         required: false
         type: string
+      SCRIPT:
+        required: true
+        type: string
 
 jobs:
   k6_local_test:
@@ -35,5 +38,5 @@ jobs:
         run: xk6 build --with github.com/mostafa/xk6-kafka@latest
 
       - name: Run k6 extension test
-        run: ./k6 run --vus ${{ inputs.VUS }} --duration ${{ inputs.DURATION }} -e BROKERS=${{ inputs.BROKERS }} -e USER_SASL=${{ inputs.USER_SASL }} -e PASS_SASL=${{ inputs.PASS_SASL }} kafka/script.js 
+        run: ./k6 run --vus ${{ inputs.VUS }} --duration ${{ inputs.DURATION }} -e BROKERS=${{ inputs.BROKERS }} -e USER_SASL=${{ inputs.USER_SASL }} -e PASS_SASL=${{ inputs.PASS_SASL }} ${{ inputs.SCRIPT }}
 
