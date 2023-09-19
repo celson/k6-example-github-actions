@@ -4,7 +4,7 @@ on:
     inputs:
       VUS:
         required: true
-        type: integer
+        type: string
       DURATION:
         required: true
         type: string
